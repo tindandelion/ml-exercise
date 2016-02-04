@@ -65,12 +65,12 @@ Vagrant.configure(2) do |config|
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
    config.vm.provision "shell", inline: <<-SHELL
+     curl -sSL https://get.docker.com/ | sh
+
      wget https://repo.continuum.io/archive/Anaconda3-2.4.1-Linux-x86_64.sh
      bash Anaconda3-2.4.1-Linux-x86_64.sh -b -p /anaconda
      echo "PATH=/anaconda/bin:$PATH" >> /etc/profile
      rm -f Anaconda3-2.4.1-Linux-x86_64.sh
    SHELL
-
-   config.vm.provision "docker"
 
 end

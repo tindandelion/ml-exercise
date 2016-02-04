@@ -1,0 +1,29 @@
+https://archive.ics.uci.edu/ml/datasets/Iris
+http://blog.kaggle.com/2015/04/22/scikit-learn-video-3-machine-learning-first-steps-with-the-iris-dataset/
+sklearn.externals - what is it? 
+Anaconda ?
+
+Model is given as a Python pickle'd file (pickle?). We need to have a Python core to feed data to the model and get the result. 
+Data is streamed, one sample at a time. 
+Scalability? What's the problem? 
+API, what's the communication method? 
+
+What's the environment? 
+System is scaled when the number of samples increases 
+
+What are the monitoring/mertics for the production system? 
+
+What metrics can we provide for the developer of the model? 
+
+
+Project burndown: 
+
+- Create a docker container to run the model (Anaconda installed);
+- Wrap model into REST API (figure out best practice); 
+- Add logging capabilities as required;
+  - 
+- Enable changing model 
+- Load balancing task
+- Caching? 
+ 
+  

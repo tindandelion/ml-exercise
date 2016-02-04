@@ -1,3 +1,3 @@
-from server import app
+from iris.server import app
   
 app.run(debug=True, host='0.0.0.0', port=8080)

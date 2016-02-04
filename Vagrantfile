@@ -70,4 +70,7 @@ Vagrant.configure(2) do |config|
      echo "PATH=/anaconda/bin:$PATH" >> /etc/profile
      rm -f Anaconda3-2.4.1-Linux-x86_64.sh
    SHELL
+
+   config.vm.provision "docker"
+
 end

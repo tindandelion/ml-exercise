@@ -9,8 +9,8 @@ app = Flask(__name__)
 
 @app.route('/iris/v1/predict', methods=['POST'])
 def predict():
-  sample = request.json['sample']
-  labels = model.predict([sample])
-  return jsonify({'label': int(labels[0])})
-
-
+    sample = request.json['sample']
+    labels = model.predict([sample])
+    return jsonify({'label': int(labels[0])})
+  
+  

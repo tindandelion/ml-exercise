@@ -73,5 +73,25 @@ class IrisInputValidationTest(unittest.TestCase):
         label = data['label']
         self.assertTrue(type(label) == int, "Label is integer")
 
+class IrisModelErrorTest(unittest.TestCase):
+    request_url = '/iris/v1/predict'
+
+    def setUp(self):
+        self.app = server.app
+        self.client = self.app.test_client()
+        
+        self.orig_model = self.app.model
+        self.app.model = self
+
+    def tearDown(self):
+        self.app.model = self.orig_model
+
+    def predict(self, data): return None
+
+    def test_when_model_returns_none_server_responds_with_error(self):
+        body = to_json({'sample': [1, 2, 3, 4]})
+        response = self.client.post(self.request_url, content_type="application/json", data=body)
+        self.assertEqual(500, response.status_code)
+
 
 

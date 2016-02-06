@@ -1,9 +1,7 @@
 def make(model):
     def pred(sample):
         labels = model.predict([sample])
-        if labels:
-            return int(labels[0])
-        else:
-            return None
+        label = int(labels[0]) if labels else None
+        return label
     
     return pred

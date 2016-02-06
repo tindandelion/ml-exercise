@@ -92,6 +92,4 @@ class IrisModelErrorTest(unittest.TestCase):
         body = to_json({'sample': [1, 2, 3, 4]})
         response = self.client.post(self.request_url, content_type="application/json", data=body)
         self.assertEqual(500, response.status_code)
-
-
-
+        

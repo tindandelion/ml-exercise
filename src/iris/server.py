@@ -4,11 +4,11 @@ import iris.model
 from flask import Flask, jsonify, request, abort
 from numbers import Number
 
+SAMPLE_SIZE = 4
+
 INVALID_CONTENT_TYPE = "Request Content-Type != application/json"
 MISSING_SAMPLE = "No sample entry in request JSON"
-BAD_SAMPLE = "Sample must be an array of 4 numbers"
-
-SAMPLE_SIZE = 4
+BAD_SAMPLE = "Sample must be an array of %d numbers" % SAMPLE_SIZE
 
 class InvalidRequest(Exception):
     def __init__(self, desc):

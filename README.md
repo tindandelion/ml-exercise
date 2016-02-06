@@ -11,19 +11,17 @@ DONE Calculation error handling
 
 # Iteration 2: Deployment
 DONE Deployment: Use production web-server 
-- Logging: log it when model returns None (problem with anaconda:latest Docker image)
-- Observe production deployment options
-- Logging: what to use?
-- Scalability 
+DONE Logging: what to use?
+DONE Observe production deployment options
+DONE Scalability 
 
+# Iteration 3: Further improvements
+- Store samples and predictions for further analysis 
+  
 # Project backlog
-
-- Logging prediction errors
-- Logging prediction results
 - Model performance metrics
 - Iris dataset
 - Build: automation, continuous integration
-- Deployment: Use MiniConda or vanilla Python? 
 - Support changing the model
 - Metrics from production: what do we need?
 

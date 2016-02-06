@@ -1,5 +1,6 @@
 import os.path as path
 import iris.model
+import iris.predictor as predictor
 
 from flask import Flask, jsonify, request, abort
 from numbers import Number
@@ -16,15 +17,18 @@ class InvalidRequest(Exception):
 
 
 app = Flask(__name__)
-app.model = iris.model.load()
+model = iris.model.load()
+app.predictor = predictor.make(model)
 
 @app.route('/iris/v1/predict', methods=['POST'])
 def predict():
     sample = extract_sample_from_request(request)
     validate_sample_data(sample)
 
-    labels = app.model.predict([sample])
-    return jsonify({'label': int(labels[0])})
+    label = app.predictor(sample)
+    if not label: abort(500)
+        
+    return jsonify({'label': label})
 
 @app.errorhandler(InvalidRequest)
 def invalid_request(error):

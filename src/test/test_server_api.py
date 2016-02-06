@@ -80,13 +80,11 @@ class IrisModelErrorTest(unittest.TestCase):
         self.app = server.app
         self.client = self.app.test_client()
         
-        self.orig_model = self.app.model
-        self.app.model = self
+        self.orig_predictor = self.app.predictor
+        self.app.predictor = (lambda s: None)
 
     def tearDown(self):
-        self.app.model = self.orig_model
-
-    def predict(self, data): return None
+        self.app.predictor = self.orig_predictor
 
     def test_when_model_returns_none_server_responds_with_error(self):
         body = to_json({'sample': [1, 2, 3, 4]})

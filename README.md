@@ -10,7 +10,8 @@ DONE Proper incoming request validation
 DONE Calculation error handling
 
 # Iteration 2: Deployment
-- Deployment: Use production web-server 
+DONE Deployment: Use production web-server 
+- Logging: log it when model returns None (problem with anaconda:latest Docker image)
 - Observe production deployment options
 - Logging: what to use?
 - Scalability 

@@ -8,13 +8,19 @@ RUN cd /tmp && \
     bash Anaconda3-2.4.1-Linux-x86_64.sh -b -p /anaconda && \
     rm -f Anaconda3-2.4.1-Linux-x86_64.sh
 
+RUN /anaconda/bin/conda install gunicorn -yq
+
 ENV APP_DIR /app
 
 WORKDIR $APP_DIR
 COPY iris $APP_DIR/iris
 COPY main.py $APP_DIR
 
-EXPOSE 8080
-CMD ["/anaconda/bin/python",  "main.py"]
+EXPOSE 80
+CMD ["/anaconda/bin/gunicorn", \
+     "--bind", ":80", \
+     "--access-logfile", "-", \
+     "--error-logfile", "-", \
+     "main:app"]
 
 

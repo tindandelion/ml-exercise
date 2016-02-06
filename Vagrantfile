@@ -72,5 +72,4 @@ Vagrant.configure(2) do |config|
    SHELL
 
    config.vm.provision "docker"
-
 end

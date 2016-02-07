@@ -11,7 +11,7 @@ def make(model):
     
     return pred
 
-def with_logging(predictor, logger=None):
+def with_logging(predictor, logger=None, extra={}):
     logger = logging.getLogger(__name__) if not logger else logger
 
     def time_to_run(fn):
@@ -24,7 +24,8 @@ def with_logging(predictor, logger=None):
         label, time_delta = time_to_run(lambda: predictor(sample))
         logger.info(json.dumps({'sample': sample,
                                 'label': label,
-                                'performance_time': time_delta}))
+                                'performance_time': time_delta,
+                                'extra': extra}))
         return label
     
     return predict_with_logging

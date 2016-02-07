@@ -25,8 +25,15 @@ class LoggingPredictionTest(unittest.TestCase):
         label = predictor([1, 2, 3, 4])
         self.assertEqual(42, label)
 
+    def test_put_extras_to_log(self):
+        extra = {'extra_data': 'Lorem Ipsum'}
+        predictor = pred.with_logging(stub_predictor, logger=self, extra=extra)      
 
+        predictor([1, 2, 3, 4])
 
+        data = json.loads(self.logged_message)
+        self.assertEquals(extra, data.get('extra'))
+        
     # Logging interface
     def info(self, message):
         self.logged_message = message

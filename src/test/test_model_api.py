@@ -19,3 +19,6 @@ class ModelApiTest(unittest.TestCase):
     def test_correct_data(self):
         labels = self.model.predict([[6.0, 2.9, 4.5, 1.5]])
         self.assertEqual(1, labels[0])
+
+    def test_model_has_timestamp(self):
+        self.assertLess(0, self.model.timestamp)

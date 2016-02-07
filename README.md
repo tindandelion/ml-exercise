@@ -16,14 +16,20 @@ DONE Observe production deployment options
 DONE Scalability 
 
 # Iteration 3: Further improvements
-- Store samples and predictions for further analysis 
+DONE Store samples and predictions for further analysis
+DONE Model file timestamp is stored with results 
+
+# Iteration 4: Model metrics
+- What metrics are reasonable? 
+- Create test case for metrics validation
   
 # Project backlog
-- Model performance metrics
 - Iris dataset
-- Build: automation, continuous integration
-- Support changing the model
 - Metrics from production: what do we need?
+
+# Future improvements
+- Build automation
+- Smoke test for created container
 
 
 

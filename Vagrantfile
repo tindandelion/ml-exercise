@@ -69,7 +69,8 @@ Vagrant.configure(2) do |config|
      bash Anaconda3-2.4.1-Linux-x86_64.sh -b -p /anaconda
      echo "PATH=/anaconda/bin:$PATH" >> /etc/profile
      rm -f Anaconda3-2.4.1-Linux-x86_64.sh
-   SHELL
 
-   config.vm.provision "docker"
+     curl -sSL https://get.docker.com/ | sh
+     usermod -aG docker vagrant
+   SHELL
 end

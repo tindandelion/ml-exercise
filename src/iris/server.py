@@ -17,17 +17,15 @@ class InvalidRequest(Exception):
 
 
 app = Flask(__name__)
-model = iris.model.load()
-app.predictor = predictor.make(model)
 
 @app.route('/iris/v1/predict', methods=['POST'])
 def predict():
     sample = extract_sample_from_request(request)
     validate_sample_data(sample)
-
+    
     label = app.predictor(sample)
-    if not label: abort(500)
-        
+    
+    if label is None: abort(500)
     return jsonify({'label': label})
 
 @app.errorhandler(InvalidRequest)

@@ -13,6 +13,8 @@ class IrisInputValidationTest(unittest.TestCase):
 
     def setUp(self):
         self.app = server.app
+        self.app.predictor = (lambda m: 0)
+
         self.client = self.app.test_client()
 
     def test_correct_request_returns_success_response(self):
@@ -80,11 +82,7 @@ class IrisModelErrorTest(unittest.TestCase):
         self.app = server.app
         self.client = self.app.test_client()
         
-        self.orig_predictor = self.app.predictor
         self.app.predictor = (lambda s: None)
-
-    def tearDown(self):
-        self.app.predictor = self.orig_predictor
 
     def test_when_model_returns_none_server_responds_with_error(self):
         body = to_json({'sample': [1, 2, 3, 4]})

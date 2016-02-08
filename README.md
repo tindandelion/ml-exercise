@@ -52,36 +52,38 @@ The Python script ``src/model_report.py`` prints the performance report for the
 currently used model. The confusion matrix for provided sample file
 (``example.json``) is visualized and saved into ``confusion_matrix.png``. 
 
-# Iteration 0: Project skeleton
+# Project burndown
 
-DONE Create an application skeleton
-DONE Create deployment package with skeleton
-DONE Take model into use
+## Iteration 0: Project skeleton
 
-# Iteration 1: Refined API
+- DONE Create an application skeleton
+- DONE Create deployment package with skeleton
+- DONE Take model into use
 
-DONE Proper incoming request validation
-DONE Calculation error handling
+## Iteration 1: Refined API
 
-# Iteration 2: Deployment
-DONE Deployment: Use production web-server 
-DONE Logging: what to use?
-DONE Observe production deployment options
-DONE Scalability 
+- DONE Proper incoming request validation
+- DONE Calculation error handling
 
-# Iteration 3: Further improvements
-DONE Store samples and predictions for further analysis
-DONE Model file timestamp is stored with results 
+## Iteration 2: Deployment
+- DONE Deployment: Use production web-server 
+- DONE Logging: what to use?
+- DONE Observe production deployment options
+- DONE Scalability 
 
-# Iteration 4: Model metrics
-DONE What metrics are reasonable? 
-DONE Create test case for metrics validation
+## Iteration 3: Further improvements
+- DONE Store samples and predictions for further analysis
+- DONE Model file timestamp is stored with results 
+
+## Iteration 4: Model metrics
+- DONE What metrics are reasonable? 
+- DONE Create test case for metrics validation
   
-# Project backlog
+## Project backlog
 - Iris dataset
 - Metrics from production: what do we need?
 
-# Future improvements
+## Future improvements
 - Build automation
 - Smoke test for created container
 

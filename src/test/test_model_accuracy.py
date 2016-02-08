@@ -2,6 +2,9 @@ import unittest
 import json
 import os.path as path
 
+import numpy as np
+from sklearn.metrics import confusion_matrix, hamming_loss
+
 import iris.model as wm
 
 def load_samples():
@@ -9,30 +12,20 @@ def load_samples():
     return [s for s in json.load(open(sample_filename)) if 'label' in s]
 
 class ModelAccuracyTest(unittest.TestCase):
-    BASELINE_COST = 0.42
+    BASELINE_LOSS = 0.15
 
     def setUp(self):
         self.model = wm.load()
         self.samples = load_samples()
 
-    def test_calculate_performance_cost(self):
-        table = [[0, 0, 0],
-                 [0, 0, 0],
-                 [0, 0, 0]]
-        totals = [0, 0, 0]
+    def test_calc_hamming_loss(self):
+        labels_true = [s['label'] for s in self.samples]
+        data = [s['info'] for s in self.samples]
 
-        for smpl in self.samples:
-            label, data = smpl['label'], smpl['info']
-            pred = self.model.predict([data])[0]
-            table[pred][label] += 1
-            totals[label] += 1
+        labels_pred = self.model.predict(data)
+        loss = hamming_loss(labels_true, labels_pred)
 
-        costs = [v/totals[j] for (i, row) in enumerate(table)
-                 for (j, v) in enumerate(row) if i != j]
-
-        self.assertLess(sum(costs), self.BASELINE_COST)
-        
-
+        self.assertLess(loss, self.BASELINE_LOSS)
 
 
 
